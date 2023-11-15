@@ -14,13 +14,20 @@ cursor = conexion.cursor()
 # Nombre de la base de datos que deseas crear
 nombre_base_de_datos = "biblioteca"
 
+# Confirma la transacción
+    conexion.commit()
+except mysql.connector.Error as err:
+    print(f"Error: {err}")
+    # Revierte la transacción en caso de error
+    conexion.rollback()
+    
 # Intenta crear la base de datos
 try:
     cursor.execute(f"CREATE DATABASE {nombre_base_de_datos}")
     print(f"Base de datos '{nombre_base_de_datos}' creada con éxito.")
 except mysql.connector.Error as err:
     print(f"Error: {err}")
-
+finally:
 # Cierra el cursor y la conexión
 cursor.close()
 conexion.close()
