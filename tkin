@@ -25,6 +25,11 @@ def agregar_usuario():
     dni = entrada_DNI.get()
     print(f"Se ha agregado el usuario {nombre_usuario} con DNI {dni}")
 
+def realizar_prestamo():
+    usuario_prestamo = entrada_usuario_prestamo.get()
+    libro_prestamo = entrada_libro_prestamo.get()
+    resultado.set(f"Se ha realizado el préstamo del libro {libro_prestamo} al usuario {usuario_prestamo}")
+
 # Crear pestañas
 tab_control = ttk.Notebook(root)
 
@@ -96,15 +101,19 @@ entrada_DNI.grid(column=1, row=2, padx=10, pady=10)
 boton_agregar_usuario = ttk.Button(tab3, text="Agregar Usuario", command=agregar_usuario)
 boton_agregar_usuario.grid(column=1, row=3, padx=10, pady=10)
 
+# Pestaña 'Prestamo Libro'
+tab4 = ttk.Frame(tab_control)
+tab_control.add(tab4, text='Prestamo Libro')
 
+etiqueta_usuario_prestamo = ttk.Label(tab4, text="Usuario:")
+etiqueta_usuario_prestamo.grid(column=0, row=0, padx=10, pady=10)
+entrada_usuario_prestamo = ttk.Entry(tab4, width=30)
+entrada_usuario_prestamo.grid(column=1, row=0, padx=10, pady=10)
 
-
-
-
-
-
-
-
+etiqueta_libro_prestamo = ttk.Label(tab4, text="Libro:")
+etiqueta_libro_prestamo.grid(column=0, row=1, padx=10, pady=10)
+entrada_libro_prestamo = ttk.Entry(tab4, width=30)
+entrada_libro_prestamo.grid(column=1, row=1, padx=10,
 
 
 # Mostrar pestañas
